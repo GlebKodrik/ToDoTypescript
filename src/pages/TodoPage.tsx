@@ -50,11 +50,11 @@ export const TodoPage: React.FC = () => {
   return (
     <>
       <TodoForm onAdd={addHandler} />
-      {/*<TodoList*/}
-      {/*  todos={todos}*/}
-      {/*  onRemove={removeHandler}*/}
-      {/*  onToggle={toggleHandler}*/}
-      {/*/>*/}
+      <TodoList
+        todos={todos}
+        onRemove={removeHandler}
+        onToggle={toggleHandler}
+      />
     </>
   );
 };
