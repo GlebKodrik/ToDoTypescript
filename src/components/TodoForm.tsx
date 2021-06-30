@@ -13,6 +13,9 @@ export const TodoForm: React.FC<TProps> = (props) => {
 
   const keyPressEnter = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
+      if (!title) {
+        return alert("Задача пустая!");
+      }
       props.onAdd(title);
       setTitle("");
     }

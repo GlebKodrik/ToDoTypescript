@@ -7,6 +7,14 @@ type TProps = {
   onRemove: (id: number) => void;
 };
 export const TodoList: React.FC<TProps> = ({ todos, onRemove, onToggle }) => {
+  if (!todos.length) {
+    return <p className={"center"}>Задач нет!</p>;
+  }
+  const removeHandler = (e: React.MouseEvent, id: number) => {
+    e.preventDefault();
+    onRemove(id);
+  };
+
   return (
     <ul>
       {todos.map((todo) => {
@@ -25,7 +33,7 @@ export const TodoList: React.FC<TProps> = ({ todos, onRemove, onToggle }) => {
               <span>{todo.title}</span>
               <i
                 className={"material-icons red-text"}
-                onClick={() => onRemove(todo.id)}
+                onClick={(e) => removeHandler(e, todo.id)}
               >
                 delete
               </i>
@@ -36,3 +44,5 @@ export const TodoList: React.FC<TProps> = ({ todos, onRemove, onToggle }) => {
     </ul>
   );
 };
+
+TodoList.whyDidYouRender = true;
